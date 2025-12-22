@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Check</title>
+    
+    <!-- ইনকাম স্ক্রিপ্ট (SDK) সঠিকভাবে বসানো হলো -->
+    <script src='//libtl.com/sdk.js' data-zone='10265360' data-sdk='show_10265360'></script>
+
+    <style>
+        /* পেজ ডিজাইন */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            text-align: center; 
+            padding: 0; margin: 0; 
+            background-color: #ffffff; 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh;
+            user-select: none; 
+            -webkit-user-select: none;
+        }
+        .loader-container { text-align: center; }
+        
+        /* লোডিং এনিমেশন */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        h3 { color: #555; font-weight: normal; margin-top: 20px; }
+        p { color: #888; font-size: 14px; }
+
+        /* বাটন ডিজাইন */
+        .invisible-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .invisible-btn:hover { background: #2980b9; }
+    </style>
+
+    <script>
+        // সিকিউরিটি স্ক্রিপ্ট (Right click & Shortcuts disable)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) return false; 
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false; 
+            if(e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'S'.charCodeAt(0))) return false; 
+        }
+    </script>
+</head>
+<body>
+
+    <div class="loader-container">
+        <div class="spinner"></div>
+        <h3>Checking file security...</h3>
+        <p>Please click below to continue</p>
+        
+        <button class="invisible-btn" onclick="goToFile()">Continue</button>
+    </div>
+
+    <script>
+        // আপনার গন্তব্য লিংকটি এখানে পরিবর্তন করুন
+        const TARGET_URL = "https://t.me/ratertara_bot?start=auto_start"; 
+
+        function goToFile() {
+            var btn = document.querySelector(".invisible-btn");
+            btn.innerHTML = "Opening..."; 
+            btn.disabled = true; // বাটন একবার ক্লিক করার পর ডিজেবল হবে
+
+            // ১. অ্যাড দেখানোর চেষ্টা
+            if (typeof show_10265360 === 'function') {
+                show_10265360().then(() => {
+                    // অ্যাড সফলভাবে দেখালে রিডাইরেক্ট হবে
+                    setTimeout(() => { window.location.href = TARGET_URL; }, 500);
+                }).catch(() => {
+                    // অ্যাড লোড না হলে বা এরর দিলে রিডাইরেক্ট হবে
+                    window.location.href = TARGET_URL;
+                });
+            } else {
+                // যদি অ্যাড স্ক্রিপ্ট লোড না হয় (যেমন স্লো নেট বা অ্যাডব্লকার), তবুও রিডাইরেক্ট হবে
+                setTimeout(() => { window.location.href = TARGET_URL; }, 1000);
+            }
+        }
+    </script>
+
+</body>
+</html>
