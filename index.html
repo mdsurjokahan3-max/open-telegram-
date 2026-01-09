@@ -1,101 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Check</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tap Pro - User System</title>
     
-    <!-- ইনকাম স্ক্রিপ্ট (SDK) সঠিকভাবে বসানো হলো -->
-    <script src='//libtl.com/sdk.js' data-zone='10265360' data-sdk='show_10265360'></script>
+    <!-- Monetag SDK -->
+    <script src='//libtl.com/sdk.js' data-zone='10439799' data-sdk='show_10439799'></script>
 
     <style>
-        /* পেজ ডিজাইন */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            text-align: center; 
-            padding: 0; margin: 0; 
-            background-color: #ffffff; 
-            display: flex; justify-content: center; align-items: center; 
-            height: 100vh;
-            user-select: none; 
-            -webkit-user-select: none;
+        :root {
+            --primary: #0088cc; /* Telegram Blue */
+            --bg: #0e1621;
+            --card-bg: #17212b;
+            --text: #ffffff;
+            --accent: #f5a623;
         }
-        .loader-container { text-align: center; }
-        
-        /* লোডিং এনিমেশন */
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px auto;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        h3 { color: #555; font-weight: normal; margin-top: 20px; }
-        p { color: #888; font-size: 14px; }
 
-        /* বাটন ডিজাইন */
-        .invisible-btn {
-            background: #3498db;
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Screen Management */
+        .screen {
+            display: none;
+            flex-direction: column;
+            padding: 20px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .active { display: flex; }
+
+        /* Header */
+        .user-header {
+            background: var(--card-bg);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #242f3d;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Balance Card */
+        .balance-card {
+            background: linear-gradient(135deg, #2b52e1, #1e3c72);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .balance-card h2 { margin: 0; font-size: 32px; color: var(--accent); }
+
+        /* Tap Circle */
+        .tap-area {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .main-btn {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #2a5298, #1e3c72);
+            border-radius: 50%;
+            border: 10px solid #242f3d;
+            box-shadow: 0 0 30px rgba(0, 136, 204, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .main-btn:active { transform: scale(0.9); }
+
+        /* Task List */
+        .task-item {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-btn {
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 16px;
+            padding: 8px 15px;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
         }
-        .invisible-btn:hover { background: #2980b9; }
-    </style>
 
-    <script>
-        // সিকিউরিটি স্ক্রিপ্ট (Right click & Shortcuts disable)
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123) return false; 
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false; 
-            if(e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'S'.charCodeAt(0))) return false; 
+        /* Bottom Nav */
+        .bottom-nav {
+            height: 70px;
+            background: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #242f3d;
         }
-    </script>
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #708499;
+            cursor: pointer;
+        }
+
+        .nav-item.active-nav { color: var(--primary); }
+
+        /* Forms */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #242f3d;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .withdraw-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Floating Text */
+        .plus-one {
+            position: absolute;
+            color: #00d2ff;
+            font-weight: bold;
+            animation: moveUp 0.8s ease-out forwards;
+        }
+        @keyframes moveUp {
+            to { transform: translateY(-100px); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="loader-container">
-        <div class="spinner"></div>
-        <h3>Checking file security...</h3>
-        <p>Please click below to continue</p>
+    <!-- Header -->
+    <div class="user-header">
+        <div class="avatar" id="userInitial">U</div>
+        <div>
+            <div id="userName" style="font-weight: bold;">User_4592</div>
+            <div style="font-size: 12px; color: #708499;">Level: <span id="userLevel">1</span></div>
+        </div>
+    </div>
+
+    <!-- Home Screen (Tapping) -->
+    <div id="home" class="screen active">
+        <div class="balance-card">
+            <p>Main Balance</p>
+            <h2 id="balance">0.00</h2>
+            <p style="font-size: 12px;">Coins</p>
+        </div>
         
-        <button class="invisible-btn" onclick="goToFile()">Continue</button>
+        <div class="tap-area">
+            <div class="main-btn" id="tapBtn">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968260.png" width="80">
+            </div>
+            <p id="tapStatus" style="margin-top: 20px; color: #708499;">Tap to mine coins</p>
+        </div>
+    </div>
+
+    <!-- Task Screen -->
+    <div id="tasks" class="screen">
+        <h3>Daily Tasks</h3>
+        <div class="task-item">
+            <div>
+                <div>Watch Video Ad</div>
+                <small style="color: #2ecc71;">+50.00 Coins</small>
+            </div>
+            <button class="task-btn" onclick="watchAdTask()">Watch</button>
+        </div>
+        <div class="task-item">
+            <div>
+                <div>Daily Check-in</div>
+                <small style="color: #2ecc71;">+10.00 Coins</small>
+            </div>
+            <button class="task-btn" onclick="dailyBonus()">Claim</button>
+        </div>
+    </div>
+
+    <!-- Withdraw Screen -->
+    <div id="withdraw" class="screen">
+        <h3>Withdraw Funds</h3>
+        <div class="balance-card" style="background: #17212b;">
+            <p>Available for Payout</p>
+            <h2 id="wBalance">0.00</h2>
+        </div>
+        
+        <label>Select Method:</label>
+        <select style="width: 100%; padding: 10px; background: #242f3d; color: white; border-radius: 5px;">
+            <option>BKash</option>
+            <option>Nagad</option>
+            <option>Binance Pay</option>
+        </select>
+
+        <input type="text" placeholder="Enter Account Number">
+        <input type="number" placeholder="Amount">
+        <button class="withdraw-btn" onclick="alert('Withdraw request sent!')">Withdraw Now</button>
+        <p style="font-size: 11px; color: #ef4444; margin-top: 10px;">* Minimum withdrawal: 500000 Coins</p>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active-nav" onclick="showScreen('home', this)">
+            <span>🏠</span>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="showScreen('tasks', this)">
+            <span>📋</span>
+            <span>Tasks</span>
+        </div>
+        <div class="nav-item" onclick="showScreen('withdraw', this)">
+            <span>💰</span>
+            <span>Wallet</span>
+        </div>
     </div>
 
     <script>
-        // আপনার গন্তব্য লিংকটি এখানে পরিবর্তন করুন
-        const TARGET_URL = "https://t.me/ratertara_bot?start=auto_start"; 
+        // Data State
+        let balance = parseFloat(localStorage.getItem('sys_bal')) || 0;
+        let tapCount = 0;
+        const adEvery = 20; // প্রতি ২০ ট্যাপে অ্যাড
 
-        function goToFile() {
-            var btn = document.querySelector(".invisible-btn");
-            btn.innerHTML = "Opening..."; 
-            btn.disabled = true; // বাটন একবার ক্লিক করার পর ডিজেবল হবে
+        // Initialize UI
+        updateUI();
 
-            // ১. অ্যাড দেখানোর চেষ্টা
-            if (typeof show_10265360 === 'function') {
-                show_10265360().then(() => {
-                    // অ্যাড সফলভাবে দেখালে রিডাইরেক্ট হবে
-                    setTimeout(() => { window.location.href = TARGET_URL; }, 500);
-                }).catch(() => {
-                    // অ্যাড লোড না হলে বা এরর দিলে রিডাইরেক্ট হবে
-                    window.location.href = TARGET_URL;
-                });
-            } else {
-                // যদি অ্যাড স্ক্রিপ্ট লোড না হয় (যেমন স্লো নেট বা অ্যাডব্লকার), তবুও রিডাইরেক্ট হবে
-                setTimeout(() => { window.location.href = TARGET_URL; }, 1000);
+        // Tap Logic
+        document.getElementById('tapBtn').addEventListener('click', function(e) {
+            balance += 0.25;
+            tapCount++;
+            
+            // Haptic feedback
+            if(navigator.vibrate) navigator.vibrate(40);
+
+            // Floating text
+            showFloatingText(e.clientX, e.clientY);
+
+            // Ad System
+            if(tapCount >= adEvery) {
+                tapCount = 0;
+                triggerAd(false);
+            }
+
+            updateUI();
+            saveData();
+        });
+
+        // Task Ad Logic
+        function watchAdTask() {
+            triggerAd(true);
+        }
+
+        async function triggerAd(isTask) {
+            if (typeof show_10439799 === 'function') {
+                try {
+                    await show_10439799();
+                    if(isTask) {
+                        balance += 50; // টাস্ক অ্যাড দেখলে ৫০ কয়েন
+                        alert("Task Complete! +50 Coins");
+                    } else {
+                        balance += 5; // রেগুলার অ্যাড দেখলে ৫ কয়েন বোনাস
+                    }
+                    updateUI();
+                    saveData();
+                } catch (e) {
+                    console.log("Ad missed");
+                }
             }
         }
-    </script>
 
+        function dailyBonus() {
+            balance += 10;
+            alert("Daily bonus claimed!");
+            updateUI();
+            saveData();
+        }
+
+        // System Functions
+        function showScreen(screenId, navEl) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active-nav'));
+            
+            document.getElementById(screenId).classList.add('active');
+            navEl.classList.add('active-nav');
+        }
+
+        function updateUI() {
+            document.getElementById('balance').innerText = balance.toFixed(2);
+            document.getElementById('wBalance').innerText = balance.toFixed(2);
+            document.getElementById('userLevel').innerText = Math.floor(balance / 1000) + 1;
+        }
+
+        function saveData() {
+            localStorage.setItem('sys_bal', balance);
+        }
+
+        function showFloatingText(x, y) {
+            const el = document.createElement('div');
+            el.className = 'plus-one';
+            el.innerText = '+0.25';
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+        }
+    </script>
 </body>
 </html>
