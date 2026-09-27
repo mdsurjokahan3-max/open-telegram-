@@ -1,349 +1,864 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tap Pro - User System</title>
-    
-    <!-- Monetag SDK -->
-    <script src='//libtl.com/sdk.js' data-zone='10439799' data-sdk='show_10439799'></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --primary: #0088cc; /* Telegram Blue */
-            --bg: #0e1621;
-            --card-bg: #17212b;
-            --text: #ffffff;
-            --accent: #f5a623;
-        }
+<title>Free Spin rater tara contact</title>
 
-        body {
-            margin: 0;
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Roboto', sans-serif;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Screen Management */
-        .screen {
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-            height: calc(100vh - 70px);
-            overflow-y: auto;
-        }
+<style>
 
-        .active { display: flex; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* Header */
-        .user-header {
-            background: var(--card-bg);
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid #242f3d;
-        }
+body{
+    font-family:'Hind Siliguri',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#fff1f7,#eee7ff);
+    padding:20px 12px;
+}
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
+.app{
+    width:100%;
+    max-width:430px;
+    margin:auto;
+    background:#fff;
+    border-radius:28px;
+    padding:24px 16px 30px;
+    box-shadow:0 15px 45px rgba(0,0,0,.15);
+}
 
-        /* Balance Card */
-        .balance-card {
-            background: linear-gradient(135deg, #2b52e1, #1e3c72);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.header{
+    text-align:center;
+}
 
-        .balance-card h2 { margin: 0; font-size: 32px; color: var(--accent); }
+.logo{
+    width:78px;
+    height:78px;
+    margin:auto;
 
-        /* Tap Circle */
-        .tap-area {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-        .main-btn {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, #2a5298, #1e3c72);
-            border-radius: 50%;
-            border: 10px solid #242f3d;
-            box-shadow: 0 0 30px rgba(0, 136, 204, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.1s;
-        }
+    border-radius:50%;
 
-        .main-btn:active { transform: scale(0.9); }
+    font-size:40px;
 
-        /* Task List */
-        .task-item {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    background:
+        linear-gradient(135deg,#ff2874,#754cff);
 
-        .task-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    box-shadow:
+        0 10px 25px rgba(117,76,255,.30);
+}
 
-        /* Bottom Nav */
-        .bottom-nav {
-            height: 70px;
-            background: var(--card-bg);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-top: 1px solid #242f3d;
-        }
+h1{
+    margin-top:13px;
+    font-size:28px;
+}
 
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 12px;
-            color: #708499;
-            cursor: pointer;
-        }
+.subtitle{
+    color:#777;
+    margin-top:3px;
+}
 
-        .nav-item.active-nav { color: var(--primary); }
 
-        /* Forms */
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #242f3d;
-            border: 1px solid #334155;
-            color: white;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
+/* =========================
+   WHEEL
+========================= */
 
-        .withdraw-btn {
-            background: #2ecc71;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 15px;
-            font-weight: bold;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
+.wheel-area{
+    position:relative;
 
-        /* Floating Text */
-        .plus-one {
-            position: absolute;
-            color: #00d2ff;
-            font-weight: bold;
-            animation: moveUp 0.8s ease-out forwards;
-        }
-        @keyframes moveUp {
-            to { transform: translateY(-100px); opacity: 0; }
-        }
-    </style>
+    width:280px;
+    height:280px;
+
+    margin:32px auto 25px;
+}
+
+.pointer{
+    position:absolute;
+
+    top:-17px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:20;
+
+    width:0;
+    height:0;
+
+    border-left:18px solid transparent;
+    border-right:18px solid transparent;
+    border-top:38px solid #222;
+
+    filter:
+        drop-shadow(0 3px 3px rgba(0,0,0,.3));
+}
+
+.wheel{
+    position:relative;
+
+    width:280px;
+    height:280px;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            #4d7cff 0deg 90deg,
+            #229ed9 90deg 180deg,
+            #25d366 180deg 270deg,
+            #ff4d6d 270deg 360deg
+        );
+
+    border:9px solid #fff;
+
+    box-shadow:
+        0 12px 32px rgba(0,0,0,.22);
+
+    transition:
+        transform 4s cubic-bezier(.12,.8,.16,1);
+}
+
+
+/* =========================
+   WHEEL TEXT
+========================= */
+
+.wheel-text{
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    left:0;
+    top:0;
+}
+
+.option{
+    position:absolute;
+
+    width:110px;
+
+    left:50%;
+    top:50%;
+
+    margin-left:-55px;
+    margin-top:-17px;
+
+    text-align:center;
+
+    color:#fff;
+
+    font-size:16px;
+    font-weight:700;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.45);
+}
+
+.option span{
+    display:block;
+    font-size:27px;
+}
+
+.o1{
+    transform:
+        rotate(45deg)
+        translateY(-90px);
+}
+
+.o2{
+    transform:
+        rotate(135deg)
+        translateY(-90px);
+}
+
+.o3{
+    transform:
+        rotate(225deg)
+        translateY(-90px);
+}
+
+.o4{
+    transform:
+        rotate(315deg)
+        translateY(-90px);
+}
+
+
+/* CENTER */
+
+.center{
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.25);
+
+    z-index:5;
+}
+
+
+/* =========================
+   SPIN BUTTON
+========================= */
+
+.spin-btn{
+    width:100%;
+
+    border:0;
+    border-radius:17px;
+
+    padding:15px;
+
+    color:#fff;
+
+    font-family:inherit;
+
+    font-size:20px;
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff2874,
+            #754cff
+        );
+
+    box-shadow:
+        0 8px 22px rgba(117,76,255,.28);
+
+    cursor:pointer;
+}
+
+.spin-btn:active{
+    transform:scale(.97);
+}
+
+.spin-btn:disabled{
+    opacity:.55;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:20px 15px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4f8,
+            #f3efff
+        );
+}
+
+.result-icon{
+    font-size:45px;
+}
+
+.result h2{
+    margin-top:5px;
+    font-size:23px;
+}
+
+.result p{
+    color:#777;
+    margin-top:4px;
+}
+
+
+/* =========================
+   OPEN BUTTON
+========================= */
+
+.open-btn{
+    display:none;
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:13px;
+
+    border:0;
+
+    border-radius:14px;
+
+    color:#fff;
+
+    font-family:inherit;
+
+    font-size:17px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+.telegram{
+    background:#229ED9;
+}
+
+.imo{
+    background:#4d7cff;
+}
+
+.call{
+    background:#ff4d6d;
+}
+
+
+/* =========================
+   AD
+========================= */
+
+.ad-box{
+    margin-top:23px;
+
+    min-height:80px;
+
+    border-radius:15px;
+
+    background:#f8f8f8;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.footer{
+    text-align:center;
+
+    color:#999;
+
+    font-size:12px;
+
+    margin-top:20px;
+}
+
+</style>
 </head>
+
+
 <body>
 
-    <!-- Header -->
-    <div class="user-header">
-        <div class="avatar" id="userInitial">U</div>
-        <div>
-            <div id="userName" style="font-weight: bold;">User_4592</div>
-            <div style="font-size: 12px; color: #708499;">Level: <span id="userLevel">1</span></div>
+<div class="app">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="logo">
+            📞
         </div>
+
+        <h1>
+            contact
+        </h1>
+
+        <div class="subtitle">
+            যোগাযোগের জন্য ফ্রী স্পিন বোলিং করুন
+        </div>
+
     </div>
 
-    <!-- Home Screen (Tapping) -->
-    <div id="home" class="screen active">
-        <div class="balance-card">
-            <p>Main Balance</p>
-            <h2 id="balance">0.00</h2>
-            <p style="font-size: 12px;">Coins</p>
-        </div>
-        
-        <div class="tap-area">
-            <div class="main-btn" id="tapBtn">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968260.png" width="80">
+
+    <!-- WHEEL -->
+
+    <div class="wheel-area">
+
+        <div class="pointer"></div>
+
+        <div
+            class="wheel"
+            id="wheel">
+
+            <div class="wheel-text">
+
+                <div class="option o1">
+                    <span></span>
+                    IMO
+                </div>
+
+                <div class="option o2">
+                    <span></span>
+                    Telegram
+                </div>
+
+                <div class="option o3">
+                    <span></span>
+                    Call
+                </div>
+
+                <div class="option o4">
+                    <span></span>
+                    WhatsApp
+                </div>
+
             </div>
-            <p id="tapStatus" style="margin-top: 20px; color: #708499;">Tap to mine coins</p>
-        </div>
-    </div>
 
-    <!-- Task Screen -->
-    <div id="tasks" class="screen">
-        <h3>Daily Tasks</h3>
-        <div class="task-item">
-            <div>
-                <div>Watch Video Ad</div>
-                <small style="color: #2ecc71;">+50.00 Coins</small>
+
+            <div class="center">
+                📥
             </div>
-            <button class="task-btn" onclick="watchAdTask()">Watch</button>
+
         </div>
-        <div class="task-item">
-            <div>
-                <div>Daily Check-in</div>
-                <small style="color: #2ecc71;">+10.00 Coins</small>
-            </div>
-            <button class="task-btn" onclick="dailyBonus()">Claim</button>
-        </div>
+
     </div>
 
-    <!-- Withdraw Screen -->
-    <div id="withdraw" class="screen">
-        <h3>Withdraw Funds</h3>
-        <div class="balance-card" style="background: #17212b;">
-            <p>Available for Payout</p>
-            <h2 id="wBalance">0.00</h2>
-        </div>
-        
-        <label>Select Method:</label>
-        <select style="width: 100%; padding: 10px; background: #242f3d; color: white; border-radius: 5px;">
-            <option>BKash</option>
-            <option>Nagad</option>
-            <option>Binance Pay</option>
-        </select>
 
-        <input type="text" placeholder="Enter Account Number">
-        <input type="number" placeholder="Amount">
-        <button class="withdraw-btn" onclick="alert('Withdraw request sent!')">Withdraw Now</button>
-        <p style="font-size: 11px; color: #ef4444; margin-top: 10px;">* Minimum withdrawal: 500000 Coins</p>
+    <!-- SPIN -->
+
+    <button
+        class="spin-btn"
+        id="spinBtn"
+        onclick="spinWheel()">
+
+       Inbox 
+
+    </button>
+
+
+    <!-- RESULT -->
+
+    <div
+        class="result"
+        id="result">
+
+        <div
+            class="result-icon"
+            id="resultIcon">
+            🎉
+        </div>
+
+        <h2 id="resultTitle">
+            Congratulations!
+        </h2>
+
+        <p id="resultText">
+            যোগাযোগের জন্য ফ্রী স্পিন বোলিং করুন
+        </p>
+
+
+        <!-- WHATSAPP -->
+
+        <button
+            id="whatsappBtn"
+            class="open-btn whatsapp"
+            onclick="openWhatsApp()">
+
+             WhatsApp 
+
+        </button>
+
+
+        <!-- TELEGRAM -->
+
+        <button
+            id="telegramBtn"
+            class="open-btn telegram"
+            onclick="openTelegram()">
+
+             Telegram
+
+        </button>
+
+
+        <!-- IMO -->
+
+        <button
+            id="imoBtn"
+            class="open-btn imo"
+            onclick="openIMO()">
+
+             IMO
+
+        </button>
+
+
+        <!-- CALL -->
+
+        <button
+            id="callBtn"
+            class="open-btn call"
+            onclick="makeCall()">
+
+             Call
+
+        </button>
+
     </div>
 
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <div class="nav-item active-nav" onclick="showScreen('home', this)">
-            <span>🏠</span>
-            <span>Home</span>
-        </div>
-        <div class="nav-item" onclick="showScreen('tasks', this)">
-            <span>📋</span>
-            <span>Tasks</span>
-        </div>
-        <div class="nav-item" onclick="showScreen('withdraw', this)">
-            <span>💰</span>
-            <span>Wallet</span>
-        </div>
+
+    <!-- AD -->
+
+    <div class="ad-box">
+
+        <script src="https://pl28030591.profitableratecpmnetwork.com/58/67/e1/5867e18023cf6a8b2d757323591ba74f.js"></script>
+
     </div>
 
-    <script>
-        // Data State
-        let balance = parseFloat(localStorage.getItem('sys_bal')) || 0;
-        let tapCount = 0;
-        const adEvery = 20; // প্রতি ২০ ট্যাপে অ্যাড
 
-        // Initialize UI
-        updateUI();
+    <div class="footer">
+        © 2026 ratertara contact • All Rights Reserved
+    </div>
 
-        // Tap Logic
-        document.getElementById('tapBtn').addEventListener('click', function(e) {
-            balance += 0.25;
-            tapCount++;
-            
-            // Haptic feedback
-            if(navigator.vibrate) navigator.vibrate(40);
+</div>
 
-            // Floating text
-            showFloatingText(e.clientX, e.clientY);
 
-            // Ad System
-            if(tapCount >= adEvery) {
-                tapCount = 0;
-                triggerAd(false);
-            }
+<script>
 
-            updateUI();
-            saveData();
+/* ==========================================
+   YOUR CONTACT INFORMATION
+========================================== */
+
+const WHATSAPP_NUMBER = "8801816818428";
+
+const TELEGRAM_USERNAME = "@ratertara_bot";
+
+const CALL_NUMBER = "tel:+8801816818428";
+
+
+/* ==========================================
+   ONLY 4 OPTIONS
+========================================== */
+
+const options = [
+
+    {
+        title:"IMO",
+        icon:"",
+        text:"আপনার Free IMO Option নির্বাচিত হয়েছে।",
+        type:"imo"
+    },
+
+    {
+        title:"Telegram",
+        icon:"",
+        text:"আপনার Free Telegram Option নির্বাচিত হয়েছে।",
+        type:"telegram"
+    },
+
+    {
+        title:"Call",
+        icon:"📞",
+        text:"আপনার Free Call Option নির্বাচিত হয়েছে।",
+        type:"call"
+    },
+
+    {
+        title:"WhatsApp",
+        icon:"",
+        text:"আপনার Free WhatsApp Option নির্বাচিত হয়েছে।",
+        type:"whatsapp"
+    }
+
+];
+
+
+/* ==========================================
+   SPIN
+========================================== */
+
+let spinning = false;
+
+let currentRotation = 0;
+
+function spinWheel(){
+
+    if(spinning) return;
+
+    spinning = true;
+
+    const wheel =
+        document.getElementById("wheel");
+
+    const button =
+        document.getElementById("spinBtn");
+
+    const result =
+        document.getElementById("result");
+
+
+    button.disabled = true;
+
+    result.style.display = "none";
+
+
+    /* Hide all buttons */
+
+    document
+        .getElementById("whatsappBtn")
+        .style.display = "none";
+
+    document
+        .getElementById("telegramBtn")
+        .style.display = "none";
+
+    document
+        .getElementById("imoBtn")
+        .style.display = "none";
+
+    document
+        .getElementById("callBtn")
+        .style.display = "none";
+
+
+    /* Random option */
+
+    const selectedIndex =
+        Math.floor(
+            Math.random() * options.length
+        );
+
+
+    /*
+       4 options = 90 degree
+    */
+
+    const segment = 90;
+
+
+    const targetAngle =
+        360 -
+        (
+            selectedIndex * segment
+            + segment / 2
+        );
+
+
+    const extraSpins =
+        360 * 6;
+
+
+    currentRotation +=
+        extraSpins + targetAngle;
+
+
+    wheel.style.transform =
+        `rotate(${currentRotation}deg)`;
+
+
+    /* Result */
+
+    setTimeout(function(){
+
+        const selected =
+            options[selectedIndex];
+
+
+        document
+            .getElementById("resultIcon")
+            .textContent =
+            selected.icon;
+
+
+        document
+            .getElementById("resultTitle")
+            .textContent =
+            selected.title;
+
+
+        document
+            .getElementById("resultText")
+            .textContent =
+            selected.text;
+
+
+        result.style.display =
+            "block";
+
+
+        if(selected.type === "whatsapp"){
+
+            document
+                .getElementById("whatsappBtn")
+                .style.display =
+                "block";
+
+        }
+
+
+        if(selected.type === "telegram"){
+
+            document
+                .getElementById("telegramBtn")
+                .style.display =
+                "block";
+
+        }
+
+
+        if(selected.type === "imo"){
+
+            document
+                .getElementById("imoBtn")
+                .style.display =
+                "block";
+
+        }
+
+
+        if(selected.type === "call"){
+
+            document
+                .getElementById("callBtn")
+                .style.display =
+                "block";
+
+        }
+
+
+        button.disabled = false;
+
+        spinning = false;
+
+
+        result.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
         });
 
-        // Task Ad Logic
-        function watchAdTask() {
-            triggerAd(true);
-        }
 
-        async function triggerAd(isTask) {
-            if (typeof show_10439799 === 'function') {
-                try {
-                    await show_10439799();
-                    if(isTask) {
-                        balance += 50; // টাস্ক অ্যাড দেখলে ৫০ কয়েন
-                        alert("Task Complete! +50 Coins");
-                    } else {
-                        balance += 5; // রেগুলার অ্যাড দেখলে ৫ কয়েন বোনাস
-                    }
-                    updateUI();
-                    saveData();
-                } catch (e) {
-                    console.log("Ad missed");
-                }
-            }
-        }
+    },4000);
 
-        function dailyBonus() {
-            balance += 10;
-            alert("Daily bonus claimed!");
-            updateUI();
-            saveData();
-        }
+}
 
-        // System Functions
-        function showScreen(screenId, navEl) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active-nav'));
-            
-            document.getElementById(screenId).classList.add('active');
-            navEl.classList.add('active-nav');
-        }
 
-        function updateUI() {
-            document.getElementById('balance').innerText = balance.toFixed(2);
-            document.getElementById('wBalance').innerText = balance.toFixed(2);
-            document.getElementById('userLevel').innerText = Math.floor(balance / 1000) + 1;
-        }
+/* ==========================================
+   WHATSAPP
+========================================== */
 
-        function saveData() {
-            localStorage.setItem('sys_bal', balance);
-        }
+function openWhatsApp(){
 
-        function showFloatingText(x, y) {
-            const el = document.createElement('div');
-            el.className = 'plus-one';
-            el.innerText = '+0.25';
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            document.body.appendChild(el);
-            setTimeout(() => el.remove(), 800);
-        }
-    </script>
+    if(
+        WHATSAPP_NUMBER ===
+        "8801816818428"
+    ){
+
+        alert(
+            "প্রথমে WHATSAPP_NUMBER-এ আপনার নম্বর দিন।"
+        );
+
+        return;
+    }
+
+
+    window.open(
+        "https://wa.me/" +
+        WHATSAPP_NUMBER,
+        "_blank"
+    );
+
+}
+
+
+/* ==========================================
+   TELEGRAM
+========================================== */
+
+function openTelegram(){
+
+    if(
+        TELEGRAM_USERNAME ===
+        "@ratertara_bot"
+    ){
+
+        alert(
+            "ratertara_bot"
+        );
+
+        return;
+    }
+
+
+    const username =
+        TELEGRAM_USERNAME
+        .replace(" @ratertara_bot ","");
+
+
+    window.open(
+        "https://t.me/ratertara_bot" +
+        username,
+        "_blank"
+    );
+
+}
+
+
+/* ==========================================
+   IMO
+========================================== */
+
+function openIMO(){
+
+    /*
+       IMO অ্যাপ ইনস্টল থাকলে
+       অ্যাপ খোলার চেষ্টা করবে।
+    */
+
+    window.location.href =
+        "imo://";
+
+}
+
+
+/* ==========================================
+   PHONE CALL
+========================================== */
+
+function makeCall(){
+
+    window.location.href =
+        CALL_NUMBER;
+
+}
+
+</script>
+
 </body>
 </html>
